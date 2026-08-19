@@ -1,8 +1,8 @@
 name: First Work Flow
-run: push
+on: push
 jobs:
   first-job: 
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get Code
         uses: actions/checkout@v3

@@ -1,0 +1,18 @@
+name: Run Jobs Parallel
+on: push
+  jobs:
+    first:
+      runs-on: ubuntu-latest
+        steps:
+          - name: FistJob-FirstStep
+            run: echo "first job DONE." 
+          - name: FirstJob-SecondStep
+            run: echo "second job DONE."
+    second:
+      runs-on: ubuntu-latest
+        steps:
+          - name: SecondJob-FirstStep
+            run: echo "Second job, first step DONE."   
+          - name: SecondJob-SecondStep
+            run: echo "Second job, second step DONE."        
+  

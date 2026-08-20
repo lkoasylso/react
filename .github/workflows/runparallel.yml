@@ -1,15 +1,21 @@
 name: Run Jobs Parallel
-on: push
+on: [push, workflow_dispatch]
 jobs:
-  first:
+  Tests:
     runs-on: ubuntu-latest
     steps:
-      - name: FistJob-FirstStep
-        run: echo "first job DONE."  
-      - name: FirstJob-SecondStep
-        run: echo "second job DONE."
-  second:
-    needs: first 
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Our Test
+        run: npm test
+  Deploy:
+    needs: Tests 
     runs-on: ubuntu-latest
     steps:
       - name: SecondJob-FirstStep

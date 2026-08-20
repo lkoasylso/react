@@ -9,6 +9,7 @@ jobs:
       - name: FirstJob-SecondStep
         run: echo "second job DONE."
   second:
+    needs: first
     runs-on: ubuntu-latest
     steps:
       - name: SecondJob-FirstStep
